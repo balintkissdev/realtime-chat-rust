@@ -1,0 +1,6 @@
+backend:
+  rest_port: 9000
+  ws_port: 9001
+frontend:
+  port: 8000
+

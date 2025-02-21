@@ -1,0 +1,20 @@
+{
+  "name": "chat-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview --port 8000",
+    "start": "npm run build && npm run preview"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "@picocss/pico": "^2.0.6"
+  }
+}
