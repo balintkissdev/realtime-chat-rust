@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react'
 
 // TODO: Use YAML
 export default defineConfig({
+  plugins: [
+    react(),
+  ],
   server: {
     proxy: {
       // Forward REST API requests to backend server

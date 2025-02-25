@@ -1,7 +1,7 @@
 # Real-time chat application service in Rust
 
 > A mixed programming language project using Rust for the chat server
-backend and "vanilla" TypeScript for the frontend (without any JavaScript frameworks).
+backend and TypeScript+React for the frontend.
 
 ![Demo](doc/img/demo.png)
 
@@ -67,8 +67,7 @@ The REST endpoints are proxied by the frontend and are used for functionality.
     instead. Note that there's also a WebSocket module in `actix-web`.)
   - [actix-web](https://actix.rs/): web framework for REST API endpoints
   - [serde](https://serde.rs/): serialization library used for JSON payloads
-- Frontend: TypeScript
-  - No frontend component libraries like Angular, React, Vue or Svelte
+- Frontend: TypeScript, React
   - [Vite](https://vite.dev/): build tool and additional proxy routing of REST API endpoints
   - [Pico CSS](https://picocss.com/): a lightweight CSS framework for making
     quick prototypes and demonstrations

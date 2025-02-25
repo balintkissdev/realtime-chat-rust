@@ -12,7 +12,3 @@ main {
     gap: 1.5em;
 }
 
-#messages-area {
-    flex: 1;
-    resize: none;
-}
