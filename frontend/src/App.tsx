@@ -115,8 +115,7 @@ export default function App() {
             }
         }
 
-        fetchHistory();
-        connectToServer();
+        fetchHistory().then(() => connectToServer());
 
         return () => {
             if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
