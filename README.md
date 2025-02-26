@@ -7,7 +7,15 @@ backend and TypeScript+React for the frontend.
 
 ## How to build and run
 
-### Docker build
+### With `docker-compose`
+
+If `docker-compose` is installed, build and run the service with the following command:
+
+```sh
+docker compose up
+```
+
+### With GNU Make
 
 Build the Docker image by calling the `Makefile` with `make`:
 

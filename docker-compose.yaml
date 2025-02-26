@@ -1,0 +1,6 @@
+services:
+  chatservice:
+    build: .
+    ports:
+      - '8000:8000' # HTTP
+      - '9001:9001' # WebSocket
