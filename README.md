@@ -3,6 +3,11 @@
 > A mixed programming language project using Rust for the chat server
 backend and TypeScript+React for the frontend.
 
+The Docker deployment consist of the following:
+- Separate Docker container for backend
+- Separate Docker container for frontend
+- Deployment runs in its own Docker network
+
 ![Demo](doc/img/demo.png)
 
 ## How to build and run
@@ -17,16 +22,23 @@ docker compose up
 
 ### With GNU Make
 
-Build the Docker image by calling the `Makefile` with `make`:
+Build the Docker images by calling the `Makefile` with `make`. This will also create the `chatservice-network` Docker network.
 
 ```sh
 make
 ```
 
-Run the Docker container with the same `Makefile`:
+Run the backend container with
 
 ```sh
-make run
+make runBackend
+```
+
+Then run the frontend container with
+
+```sh
+# In another terminal window
+make runBackend
 ```
 
 ### Local build

@@ -1,6 +1,28 @@
 services:
-  chatservice:
-    build: .
+  chatservice-backend:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    ports:
+      - "9000:9000" # HTTP
+      - "9001:9001" # WebSocket
+    networks:
+      - chatservice-network
+
+  chatservice-frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
     ports:
       - '8000:8000' # HTTP
-      - '9001:9001' # WebSocket
+    environment:
+      - CHAT_ENV=prod
+    depends_on:
+      - chatservice-backend
+    networks:
+      - chatservice-network
+
+networks:
+  chatservice-network:
+    driver: bridge
+
