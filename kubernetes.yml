@@ -1,0 +1,51 @@
+# TODO: Configure network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatservice-backend
+spec:
+  selector:
+    matchLabels:
+      app: chatservice-backend
+  template:
+    metadata:
+      labels:
+        app: chatservice-backend
+    spec:
+      hostNetwork: true
+      containers:
+        - name: chatservice-backend
+          image: chatservice-backend:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9000
+              name: http
+            - containerPort: 9001
+              name: ws
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatservice-frontend
+spec:
+  selector:
+    matchLabels:
+      app: chatservice-frontend
+  template:
+    metadata:
+      labels:
+        app: chatservice-frontend
+    spec:
+      hostNetwork: true
+      containers:
+        - name: chatservice-frontend
+          image: chatservice-frontend:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+              name: http
+          # HACK: Don't pass CHAT_ENV=prod envvar
+

@@ -5,7 +5,6 @@ RUN npm install
 RUN npm run build
 
 FROM node:23-bookworm-slim as runner
-ENV CHAT_APP_ENVIRONMENT=prod
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl \
     ca-certificates \

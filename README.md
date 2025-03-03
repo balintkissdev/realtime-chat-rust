@@ -10,6 +10,17 @@ The Docker deployment consist of the following:
 
 ![Demo](doc/img/demo.png)
 
+## Table of Contents
+
+- [How to build and run](#how-to-build-and-run)
+  - [With `docker-compose`](#with-docker-compose)
+  - [With GNU Make](#with-gnu-make)
+  - [Local build](#local-build)
+  - [With Kubernetes (MicroK8s)](#with-kubernetes-microk8s)
+- [How to use](#how-to-use)
+- [Tech stack](#tech-stack)
+- [TODO](#todo)
+
 ## How to build and run
 
 ### With `docker-compose`
@@ -38,25 +49,42 @@ Then run the frontend container with
 
 ```sh
 # In another terminal window
-make runBackend
+make runFrontend
 ```
 
 ### Local build
 
 Build and run the server in `backend/`:
 
-```
+```sh
 cd backend
 cargo run --release
 ```
 
 Then build and run the frontend in `frontend/`:
 
-```
+```sh
 # In another terminal window
 cd frontend
 npm run start
 ```
+
+### With Kubernetes (MicroK8s)
+
+When using a Kubernetes distribution like [MicroK8s](https://microk8s.io), the Docker images have to be
+prebuilt and added to the local image registry of MicroK8s.
+
+```sh
+make backend
+docker save chatservice-backend > chatservice-backend.tar
+microk8s ctr image import chatservice-backend
+
+make frontend
+docker save chatservice-frontend > chatservice-frontend.tar
+microk8s ctr image import chatservice-frontend
+```
+
+After that, use `microk8s kubectl apply -f kubernetes.yml` to create the Kubernetes deployment locally.
 
 ## How to use
 
